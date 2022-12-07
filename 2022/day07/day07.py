@@ -61,5 +61,9 @@ def recursive_dir_size(directionary, dirsizes):
     return size
 
 dirsizes = []
-recursive_dir_size(directionary, dirsizes)
-print("Part 1:", sum([size for size in dirsizes if size <=100000]))
+total_size = recursive_dir_size(directionary, dirsizes)
+
+print("Part 1:", sum([size for size in dirsizes if size <= 100000]))
+print("Part 2:", min([size for size in dirsizes if size >= total_size - 40000000]))
+
+print(total_size, dirsizes)
