@@ -2,35 +2,11 @@
 
 directionary = {}
 
-testdata = """$ cd /
-$ ls
-dir a
-14848514 b.txt
-8504156 c.dat
-dir d
-$ cd a
-$ ls
-dir e
-29116 f
-2557 g
-62596 h.lst
-$ cd e
-$ ls
-584 i
-$ cd ..
-$ cd ..
-$ cd d
-$ ls
-4060174 j
-8033020 d.log
-5626152 d.ext
-7214296 k"""
-
 with open('day07_input.txt') as f:
     current = directionary
     path = [directionary]
     ls = False
-    for line in f:#testdata.split('\n'):
+    for line in f:
         tokens = line[:-1].split(' ')
         if tokens[0] == '$':
             if tokens[1] == 'cd':
@@ -65,5 +41,3 @@ total_size = recursive_dir_size(directionary, dirsizes)
 
 print("Part 1:", sum([size for size in dirsizes if size <= 100000]))
 print("Part 2:", min([size for size in dirsizes if size >= total_size - 40000000]))
-
-print(total_size, dirsizes)
